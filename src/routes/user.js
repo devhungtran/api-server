@@ -6,68 +6,58 @@ const user = express.Router();
 
 
 
-// /**
-//  * @swagger
-//  * tags:
-//  *   name: user
-//  *   description: API for managing users
-//  */
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - title
+ *         - author
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: The auto-generated id of the book
+ *         title:
+ *           type: string
+ *           description: The book title
+ *         author:
+ *           type: string
+ *           description: The book author
+ *       example:
+ *         id: d5fE_asz
+ *         title: The New Turing Omnibus
+ *         author: devhungtran
+ */
 
-// /**
-//  * @swagger
-//  * /user:
-//  *   post:
-//  *  
-//  *     summary: Đăng kí tài khoản
-//  *     tags: [user]
-//  *     parameters:
-//  *       - name: email
-//  *         in: formData
-//  *         description: Địa chỉ email của người dùng
-//  *         required: true
-//  *         type: string
-//  *       - name: phone
-//  *         in: formData
-//  *         description: Số điện thoại của người dùng
-//  *         required: true
-//  *         type: string
-//  *       - name: username
-//  *         in: formData
-//  *         description: Tên đăng nhập của người dùng
-//  *         required: true
-//  *         type: string
-//  *       - name: password
-//  *         in: formData
-//  *         description: Mật khẩu của người dùng
-//  *         required: true
-//  *         type: string
-//  *     responses:
-//  *       200:
-//  *         description: Successful operation
-//  *         content:
-//  *           application/json:
-//  *             schema:
-//  *               type: array
-//  *               items:
-//  *                 type: object
-//  *                 properties:
-//  *                   id:
-//  *                     type: string
-//  *                     example: "1"
-//  *                   username:
-//  *                     type: string
-//  *                     example: "john_doe"
-//  *                   email:
-//  *                     type: string
-//  *                     format: email
-//  *                     example: "user@example.com"
-//  *                   phone:
-//  *                     type: string
-//  *                     example: "1234567890"
-//  */
+ /**
+  * @swagger
+  * tags:
+  *   name: Books
+  *   description: The books managing API
+  */
+
+
+/**
+ * @swagger
+ * /user/get-all:
+ *   get:
+ *     summary: Returns the list of all the books
+ *     tags: [Books]
+ *     responses:
+ *       200:
+ *         description: The list of the books
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ */
 
 // // Add more routes as needed
-user.get('/product/get-all', getAlllUser)
+user.get('/get-all', getAlllUser)
 
 
 
