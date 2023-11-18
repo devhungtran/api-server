@@ -14,7 +14,7 @@ const user = express.Router();
  * @swagger
  * components:
  *   schemas:
- *     User:
+ *     users:
  *       type: object
  *       required:
  *         - title
