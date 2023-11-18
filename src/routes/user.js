@@ -34,8 +34,8 @@ const user = express.Router();
  /**
   * @swagger
   * tags:
-  *   name: Books
-  *   description: The books managing API
+  *   name: users
+  *   description: Quản lý người dùng
   */
 
 
