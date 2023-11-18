@@ -15,9 +15,6 @@ const route = require('express').Router();
 
 
 
-// routes.js
-
-
 route.use('/auth', authRoutes)
 
 route.get('/',(req,res) =>{
@@ -56,6 +53,7 @@ route.delete('/service/delete', deleteService)
 // người dùng
 
 route.get('/user/get-all' ,checkAuthenticationMDW, getAlllUser )
+
 
 
 

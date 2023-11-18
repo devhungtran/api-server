@@ -10,7 +10,7 @@
 
     const SignUp  = async (req,res) =>{
         try {
-            const {username, email, number_phone, password} = req.body
+            const {username, email, fullname, password} = req.body
 
 
 
@@ -34,11 +34,11 @@
                 return
             }       
                 
-            if(!number_phone){
+            if(!fullname){
                 res.status(500).json(
                     {
                         status: false,
-                        message: "Vui lòng nhập số điện thoại"
+                        message: "Vui lòng nhập ho va ten"
                     }
                 )
                 return
@@ -61,7 +61,7 @@
             const newUser = new  UserModel({
                 username: username,
                 email: email,
-                number_phone : number_phone,
+                fullname : fullname,
                 password: hashedPassword,
                 accessToken: token,
             })

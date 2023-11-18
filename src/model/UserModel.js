@@ -10,13 +10,17 @@ const UserSchema = new Schema({
         type: String,
         require: true
     },
+    fullname:{
+        type: String,
+        require: true
+    },
     email: {
         type:  String,
         require: true
     },
     number_phone:{
         type:String,
-        require: true
+        default: "0333433969"
     },
     password: {
         type: String,

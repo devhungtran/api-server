@@ -6,12 +6,7 @@ const { route } = require('./routes/routes');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const fs = require('fs');
-const yaml = require('yaml')
-const path = require('path');
 
-
-const file = fs.readFileSync(path.resolve('api-gateway.yaml'), 'utf-8')
-const swaggerDocus = yaml.parse(file)
 
 require('dotenv').config();
 
