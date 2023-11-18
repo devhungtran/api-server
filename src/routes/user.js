@@ -4,7 +4,12 @@ const user = express.Router();
 
 
 
-
+/**
+ * @swagger
+ * tags:
+ *   name: users
+ *   description: API for managing users
+ */
 /**
  * @swagger
  * components:
@@ -30,20 +35,12 @@ const user = express.Router();
  *         author: devhungtran
  */
 
- /**
-  * @swagger
-  * tags:
-  *   name: users
-  *   description: Quản lý người dùng
-  */
-
-
 /**
  * @swagger
  * /user/get-all:
  *   get:
  *     summary: Returns the list of all the Users
- *     tags: [Users]
+ *     tags: [users]
  *     responses:
  *       200:
  *         description: The list of the Users

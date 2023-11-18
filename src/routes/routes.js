@@ -10,6 +10,7 @@ const { generateCodeDiscount } = require('../controller/CodeDiscountController')
 const { getAlllUser } = require('../controller/UserController');
 const { checkAdmin, checkAuthenticationMDW } = require('../midlewares/checkAuthencation');
 const authRoutes = require('./auth');
+const service = require('./service');
 
 const route = require('express').Router();
 
@@ -43,11 +44,7 @@ route.post('/branch/create', createBranch)
 
 //
 
-
-// SERVICE
-route.get('/service/get-all', getAllService)
-route.post('/service/create', createService)
-route.delete('/service/delete', deleteService)
+route.use('/service', service)
 
 
 // người dùng

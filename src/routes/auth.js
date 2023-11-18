@@ -8,7 +8,7 @@ const authRoutes = express.Router();
  * @swagger
  * tags:
  *   name: authencation
- *   description: API for managing users
+ *   description: API for managing authencation
  */
 
 /**
