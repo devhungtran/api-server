@@ -5,7 +5,6 @@ const user = express.Router();
 
 
 
-
 /**
  * @swagger
  * components:
@@ -43,11 +42,11 @@ const user = express.Router();
  * @swagger
  * /user/get-all:
  *   get:
- *     summary: Returns the list of all the books
- *     tags: [Books]
+ *     summary: Returns the list of all the Users
+ *     tags: [Users]
  *     responses:
  *       200:
- *         description: The list of the books
+ *         description: The list of the Users
  *         content:
  *           application/json:
  *             schema:
