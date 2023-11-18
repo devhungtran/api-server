@@ -8,11 +8,7 @@ const BookingSchema  = new Schema({
         type: String,
         require: true
     },
-    user_id: {
-        type: String,
-        require: true
-    },
-    code_service: {
+    user_booking: {
         type: String,
         require: true
     },
@@ -41,6 +37,12 @@ const BookingSchema  = new Schema({
 const BookingModel = mongoose.model('booking', BookingSchema);
 
 
+
+
 module.exports = { 
     BookingModel
 };
+
+
+
+

@@ -23,6 +23,7 @@ const getAllService = async (req,res) =>{
         }
 
     } catch (error) {
+        console.log(error);
         res.status(500).json(
             {
                 status: false,
@@ -73,12 +74,39 @@ const deleteService =  async (req,res) =>{
 
 
     } catch (error) {
-        
+        console.log(error);
     }
 }
 
 
 
+
+
+const findServiceByCode =  async(req,res) => {
+    try {
+        const code_service = req.params.code_service
+        res.status(200).json(
+            {
+                status: true,
+                message: "get service successfully",
+                data: service
+            }
+        )
+        const service = await ServiceModel.findOne({
+            code_service: code_service
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(
+            {
+                status: true,
+                message: "get service failed",
+
+            }
+        )
+    }
+}
 
 
 
@@ -209,5 +237,6 @@ const createService =  async(req,res) =>{
 module.exports = {
     getAllService,
     createService,
-    deleteService
+    deleteService,
+    findServiceByCode
 }

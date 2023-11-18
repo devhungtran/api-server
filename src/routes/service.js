@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllService, createService } = require("../controller/ServiceController");
+const { getAllService, createService, findServiceByCode } = require("../controller/ServiceController");
 const service = express.Router();
 
 
@@ -50,12 +50,45 @@ const service = express.Router();
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Service'
+ *                 
  */
 
 // // Add more routes as needed
 // SERVICE
 service.get('/get-all', getAllService)
+
+
+
+
+
+
+
+
+/**
+ * @swagger
+ * /service/{code_service}:
+ *   get:
+ *     summary: Lấy tất cả dịch vụ
+ *     tags: [services]
+ *     responses:
+ *       200:
+ *         description: The list of the Services
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 
+ */
+  
+
+service.get('/:code_service', findServiceByCode )
+
+
+
+
+
+
 
 
 /**

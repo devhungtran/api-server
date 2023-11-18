@@ -24,7 +24,7 @@ const authRoutes = express.Router();
  *         description: Địa chỉ email của người dùng
  *         required: true
  *         type: string
- *       - name: phone
+ *       - name: number_phone
  *         in: formData
  *         description: Số điện thoại của người dùng
  *         required: true

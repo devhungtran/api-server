@@ -16,7 +16,11 @@ let ServiceSchema = new Schema ({
         type: Number,
         require: true
     },
-    image: {
+    img_banner:{
+        type: String,
+        require: true
+    },
+    image_slide: {
         img_list: [
             {
                 type: String,
@@ -39,7 +43,7 @@ let ServiceSchema = new Schema ({
     }
 
 
-}, {collection: 'service'})
+}, {collection: 'services'})
 
 const ServiceModel = mongoose.model('service', ServiceSchema);
 

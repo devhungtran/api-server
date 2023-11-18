@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-let SetingSchema = new Schema ({
+let SettingSchema = new Schema ({
     app_name : {
         type: String,
         require: true
@@ -24,6 +24,10 @@ let SetingSchema = new Schema ({
         type: String,
         require: true
     },
+    maintenance:{
+        type: Boolean,
+        default: false
+    },
     created_date: { 
         type: Date,
         default: Date.now
@@ -34,11 +38,15 @@ let SetingSchema = new Schema ({
     }
 
 
-}, {collection: 'Branch'})
+}, {collection: 'setting'})
 
-const SetingModel = mongoose.model('Branch', SetingSchema);
+const SettingModel = mongoose.model('setting', SettingSchema);
+
+
+
+
 
 
 module.exports = { 
-  SetingModel 
+  SettingModel 
 };

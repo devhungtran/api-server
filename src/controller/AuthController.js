@@ -10,10 +10,9 @@
 
     const SignUp  = async (req,res) =>{
         try {
-            const {username, email, fullname, password} = req.body
+            const {username, email, fullname, password} =  req.params ||  req.body
 
-
-
+            
             if(!username){
                 res.status(500).json(
                     {
@@ -81,13 +80,12 @@
         }
     }
 
-
-
-
-
     const  SignIn =  async(req,res) =>{
         try {
-            const { email, password} = req.body
+        
+            const email = req.params.email || req.body.email;
+            const password = req.params.password || req.body.password;
+            console.log(email);
 
             if(!email){
                 res.status(500).json(
@@ -136,7 +134,6 @@
                 
                 const accessToken = await generateAccessToken(user);
                 const refreshToken = await generateRefreshToken(user);
- 
 
 
                 req.headers.authorization  = accessToken
@@ -169,12 +166,12 @@
     }
 
 
-
     const generateAccessToken = async (user) => {
         try {
             const key = process.env.ACCESS_TOKEN_SECRET;
             const expiresIn = process.env.ACCESS_TOKEN_LIFE;
             return jwt.sign({
+               
                 username: user.username,
                 email: user.email,
                 role: user.role
@@ -189,6 +186,7 @@
             const key = process.env.ACCESS_TOKEN_SECRET
             const expiresIn = process.env.ACCESS_TOKEN_LIFE
             jwt.sign({
+               
                 username: user.username,
                 emaiil  : user.email,
                 role: user.role

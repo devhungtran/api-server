@@ -12,8 +12,14 @@ const { checkAdmin, checkAuthenticationMDW } = require('../midlewares/checkAuthe
 const authRoutes = require('./auth');
 const service = require('./service');
 const booking = require('./booking');
+const setting = require('./setting');
 
 const route = require('express').Router();
+
+
+
+
+route.use('/setting', setting)
 
 
 
@@ -47,6 +53,11 @@ route.get('/user/get-all' ,checkAuthenticationMDW, getAlllUser )
 // đặt lịch
 
 route.use('/booking', booking)
+
+
+
+
+
 
 
 module.exports = { route } 
