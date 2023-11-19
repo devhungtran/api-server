@@ -1,5 +1,6 @@
 const express = require("express");
-const { getAllService, createService, findServiceByCode } = require("../controller/ServiceController");
+const { getAllService, createService, findServiceByCode, deleteService } = require("../controller/ServiceController");
+const { checkAuthenticationMDW } = require("../midlewares/checkAuthencation");
 const service = express.Router();
 
 
@@ -62,8 +63,6 @@ service.get('/get-all', getAllService)
 
 
 
-
-
 /**
  * @swagger
  * /service/{code_service}:
@@ -83,8 +82,6 @@ service.get('/get-all', getAllService)
   
 
 service.get('/:code_service', findServiceByCode )
-
-
 
 
 
@@ -113,8 +110,29 @@ service.get('/:code_service', findServiceByCode )
  *       500:
  *         description: Some server error
  */
-service.post('/create', createService)
-// route.delete('/service/delete', deleteService)
+service.post('/create',checkAuthenticationMDW , createService)
+
+
+
+/**
+ * @swagger
+ * /service/delete/{code_service}:
+ * 
+ *  delete:
+ *      tags: [services]
+ *      description: Delete service
+ *      parameters:
+ *        - in: path
+ *          name: code_service
+ *          schema:
+ *              type: string
+ *          required: true
+ *          description: string id of service to delete
+ *      responses:
+ *          200:
+ *              description: service that was deleted
+ */
+service.delete('/delete/:service_code', checkAuthenticationMDW, deleteService)
 
 
 module.exports = service;

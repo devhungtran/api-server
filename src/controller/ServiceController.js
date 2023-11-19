@@ -43,10 +43,9 @@ const getAllService = async (req,res) =>{
 
 
 const deleteService =  async (req,res) =>{
-   
     try {
-        const {code_service}  = req.body
        
+        const code_service = req.params.code_service || req.body.code_service;
         if(!code_service){
             res.status(500).json(
                 {
@@ -58,10 +57,9 @@ const deleteService =  async (req,res) =>{
 
         }
 
-        const deleteService = await ServiceModel.deleteOne({
+        const deleteService = await ServiceModel.findOneAndDelete({
             code_service: code_service
         })
-
         if(deleteService){
             res.status(200).json(
                 {
@@ -69,12 +67,24 @@ const deleteService =  async (req,res) =>{
                     message: "Xóa sản phẩm thành công"
                 }
             )
+        }else{
+            res.status(500).json(
+                {
+                    status: false,
+                    message: "Mã sản phẩm không tồn tại !!!"
+                }
+            )
         }
         
 
-
     } catch (error) {
         console.log(error);
+        res.status(500).json(
+            {
+                status: false,
+                message: "Lỗi server !"
+            }
+        )
     }
 }
 
@@ -107,6 +117,10 @@ const findServiceByCode =  async(req,res) => {
         )
     }
 }
+
+
+
+
 
 
 
@@ -228,6 +242,7 @@ const createService =  async(req,res) =>{
         )
     }
 }
+
 
 
 

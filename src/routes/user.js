@@ -1,5 +1,6 @@
 const express = require("express");
 const { getAlllUser } = require("../controller/UserController");
+const { checkAdmin } = require("../midlewares/checkAuthencation");
 const user = express.Router();
 
 
@@ -10,30 +11,6 @@ const user = express.Router();
  *   name: users
  *   description: API for managing users
  */
-/**
- * @swagger
- * components:
- *   schemas:
- *     users:
- *       type: object
- *       required:
- *         - title
- *         - author
- *       properties:
- *         id:
- *           type: string
- *           description: The auto-generated id of the book
- *         title:
- *           type: string
- *           description: The book title
- *         author:
- *           type: string
- *           description: The book author
- *       example:
- *         id: d5fE_asz
- *         title: The New Turing Omnibus
- *         author: devhungtran
- */
 
 /**
  * @swagger
@@ -41,6 +18,15 @@ const user = express.Router();
  *   get:
  *     summary: Returns the list of all the Users
  *     tags: [users]
+ *     security:
+ *       - JWT: []  # Use the defined security definition
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         description: Token for authentication
+ *         required: true
+ *         schema:
+ *           type: string
  *     responses:
  *       200:
  *         description: The list of the Users
@@ -48,12 +34,16 @@ const user = express.Router();
  *           application/json:
  *             schema:
  *               type: array
- *               items:
- *                 $ref: '#/components/schemas/User'
  */
 
+
 // // Add more routes as needed
-user.get('/get-all', getAlllUser)
+user.get('/get-all', checkAdmin , getAlllUser)
+
+
+
+
+
 
 
 

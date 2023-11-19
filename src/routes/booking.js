@@ -13,12 +13,24 @@ const booking = express.Router();
   *   description: API for managing bookings
   */
 
+
+
+
+
+
+
+
 /**
  * @swagger
  * /booking/get-all:
  *   get:
  *     summary: Lấy tất cả booking
  *     tags: [bookings]
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         description: Token for authentication
+ *         required: true
  *     responses:
  *       200:
  *         description: The list of the bookings
@@ -27,9 +39,8 @@ const booking = express.Router();
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Service'
+ *             
  */
-
 
 
 // get tất cả
@@ -88,9 +99,6 @@ booking.get('/get-comming', checkAdmin,  getCommingBooking)
 
 
 
-booking.post('/create', checkAdmin, createBooking)
-
-
 
 
 
@@ -130,6 +138,31 @@ booking.post('/create', checkAdmin, createBooking)
 
 booking.put('/cancel/:booking_code', checkAdmin, cancelBooking)
 
+
+/**
+ * @swagger
+ * /booking/create:
+ *   post:
+ *     summary: Tạo thêm dịch vụ
+ *     tags: [services]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Book'
+ *     responses:
+ *       200:
+ *         description: Dịch vụ đã tồn tại
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ *       500:
+ *         description: Some server error
+ */
+
+booking.post('/create', checkAdmin, createBooking)
 
 
 

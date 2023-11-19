@@ -30,7 +30,8 @@ const options = {
         url: 'dev',
         email: 'devhungtran@gmail.com',
       },
-    },
+    }
+    ,
     servers: [
       {
         url: process.env.HOST,
